@@ -1,1 +1,32 @@
 
+
+header{
+	display: none;
+}
+
+
+
+.main{
+	padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+
+
+@media (min-width: $screen-md-min) { 
+    .container { 
+        max-width: 810px; 
+    }
+
+    .main{
+    	padding-left: 15px;
+    	padding-right: 15px;
+	}
+
+
+}
+
+//@media (max-width: $screen-xs-min) { 
+
+
+//}

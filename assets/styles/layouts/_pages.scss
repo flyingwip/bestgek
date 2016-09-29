@@ -1,0 +1,22 @@
+
+
+
+.grid{
+	
+	div[class^="col"] {
+		padding: 2px;
+
+		div{
+			color:#FFF;
+			background-color: $brand-primary;	
+			height: 150px;
+			padding: 2px;
+		}
+	}
+
+	// div:nth-child(n){
+	// 	background-color: blue;
+	// 	height: 150px;
+	// }
+	
+}
