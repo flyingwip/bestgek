@@ -102,5 +102,8 @@ function assets() {
   }
 
   wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+
+  //inlucde undescrore
+  wp_enqueue_script('underscore/js', Assets\asset_path('scripts/underscore-min.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

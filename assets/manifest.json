@@ -19,7 +19,11 @@
     },
     "jquery.js": {
       "bower": ["jquery"]
+    },
+    "underscore-min.js": {
+      "bower": ["underscore"]
     }
+
   },
   "config": {
     "devUrl": "www.bestgek.nl"

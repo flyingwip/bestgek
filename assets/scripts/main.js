@@ -12,6 +12,130 @@
 
 (function($) {
 
+  var KWF = {
+
+    getPosts: function() {
+        // JavaScript to be fired on all pages
+        //return 'yo';
+        jQuery( function( $ ) {
+          
+            $.ajax( {
+              url: 'wp-json/wp/v2/posts?filter[posts_per_page]=8&filter[paged]=1',
+              success: function ( data ) {
+                   
+                //objects needs to be parsed  into a flat horzizontal json 
+                var parsedObjects = KWF.parsePosts(data); 
+
+                //npw parse data into templates
+                var parsedTemplates = KWF.parseTemplates(data);                 
+
+                
+                // var template = $("#doubleColumn").html();
+                // var compiled = _.template($("#doubleColumn").html(), {variable: 'post'});
+                // $(".grid").html( compiled( {title: post.title , slug:post.slug} ) );          
+                //$("#doubleColumn").tmpl(post).appendTo(".grid");
+                
+              },
+              cache: false
+            } );
+        } );
+
+
+      },
+      parsePosts: function(jsobjects) {
+          var newArr = _.map(jsobjects, function (item) {
+              return KWF.parsePost(item);
+          });
+          return newArr;
+      },
+      parsePost: function(jsobject) {
+        
+        var post = {};
+        post.type = KWF.getData('type',jsobject.acf);
+        post.title = KWF.getData('title',jsobject);
+        post.content = KWF.getData('content',jsobject);
+        post.slug = KWF.getData('slug',jsobject);
+        post.afbeelding_een_kolom = KWF.getData('afbeelding_een_kolom',jsobject.acf);
+        post.afbeelding_een_kolom = KWF.getData('afbeelding_een_kolom',jsobject.acf);
+        post.afbeelding_twee_kolommen = KWF.getData('afbeelding_twee_kolommen',jsobject.acf);
+        post.externe_link = KWF.getData('externe_link',jsobject.acf);
+        post.video = KWF.getData('video',jsobject.acf);
+        post.externe_link = KWF.getData('externe_link',jsobject.acf);
+        
+        return post;
+      },
+      getData: function( property,jsobject) {
+          if( typeof jsobject[property] == 'string'){
+            return jsobject[property]
+          } else {
+            return jsobject[property].rendered;  
+          }
+      },
+      parseTemplates: function(jsobjects) {
+
+          //map throught the array
+          var openRow = true;
+          var amountColumns = 2;
+          var newArr = _.map(jsobjects, function (item, index) {
+
+              //do I need to open a row? 
+              if(openRow){
+
+                //what kind of row . 2 or 3 column?
+                if(KWF.isOdd(currentRow)){
+                  amountColumns = 3;
+                } else {
+                  amountColumns = 2;
+                }
+                //now open row
+                KWF.openRow();  
+                //console.log('huidige rij', currentRow);
+                openRow = false;
+              } 
+
+              //console.log('parse kolom');
+              //parse cuurent item into right template
+              amountColumns--;
+              //do I need to close a row?
+              if(amountColumns==0){
+                KWF.closeRow();  
+                openRow = true;
+              }
+
+              //return KWF.todoParse(item);
+          });
+          return newArr;
+      },
+      isOdd: function(num) {
+        return num % 2;
+      },
+      openRow: function(amountColumns) {
+
+
+        for (var i = 0; i < amountColumns; i++) {
+           //parse data 
+        }
+
+        return true;
+
+        //how many columns
+        //var template = '<div class="row">';
+
+        //now add a column
+      }, 
+      closeRow: function() {
+        var template = '</div';
+        
+        //increase the current row
+        
+        //add row counter
+      }
+
+
+
+  }
+
+
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
   var Sage = {
@@ -28,6 +152,7 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
+        KWF.getPosts() ; 
       },
       finalize: function() {
         // JavaScript to be fired on the home page, after the init JS

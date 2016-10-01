@@ -1,0 +1,36 @@
+
+
+1. haal alle posts op
+
+2.  start de loop
+
+	- begin een rij
+
+	- bepaal hoeveel kolommen er zijn
+	- Dit bepaalt ook de breedte en dus welke afbeelding er gebruikt moet worden.
+
+		- start kolom loop
+
+			- haal huidige post op
+			- Wat voor post is het ? 
+				- blog
+				- externe link
+				- video
+				- gallery
+				- quote
+
+			- Vul de kolom data / Selecteer de juiste template
+
+
+3. Ajax hoe			
+
+
+
+
+
+
+3. haal de huidige post op
+
+
+
+
