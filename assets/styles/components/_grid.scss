@@ -8,3 +8,62 @@
 .sidebar {
   @include make-sm-column($sidebar-sm-columns);
 }
+
+
+.grid{
+	
+	div[class^="col"] {
+		padding: 1px;
+		position: relative;
+		.greybox{
+			box-sizing : border-box;
+			position: absolute;
+			width: 100%;
+			left: 0px;
+			background-color: rgba(64,64,64,0.6) ;
+			padding: 4%;
+			bottom:0px;
+
+			h4{
+				font-weight: bold;	
+			}
+
+			button{
+				color:$brand-primary;
+				background-color: #FFF;
+				border: 0px;
+				font-weight: bold;
+				border-radius: 3px;
+				padding: 7px;
+				
+			}
+		}
+
+		.column{
+			background-color: $brand-primary;	
+			height: 275px;
+		}
+		div{
+			color:#FFF;
+		}
+	}
+
+	
+}
+
+.quote{
+
+	div{
+		padding: 20px;
+		font-size:25px;
+		bottom: 0;
+		height: 100px;
+		left: 0;
+		margin: auto;
+		position: absolute;
+		top: 0;
+		right: 0;
+  		transform: translate(0%, -50%);
+	}
+	
+}

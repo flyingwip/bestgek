@@ -30,7 +30,11 @@
                 var parsedTemplates = KWF.parseTemplates(parsedObjects);                 
 
                 //add the comipled grid to the grid container
-                $(".grid").html( parsedTemplates );            
+                $(".grid").html( parsedTemplates ).promise().done(function(){
+                  console.log('grid loaded');              
+                  $( '.swipebox' ).swipebox();
+                })
+                
                 
                 
                 
@@ -95,7 +99,7 @@
               } 
 
               //get the right type template
-              item = KWF.setBackgroundImage(item);
+              item = KWF.setBackgroundImage(item,column_layout);
               var post = KWF.getTypeTemplate(item);
               
               //parse current item into right template
@@ -149,12 +153,13 @@
       },
       setBackgroundImage: function(post, columns) {
 
+
         if(columns===2){
           post.background_image = post.afbeelding_twee_kolommen;
         } else {
           post.background_image = post.afbeelding_een_kolom;
         }
-
+        
         return post;
       }
 
@@ -178,10 +183,13 @@
     'home': {
       init: function() {
         // JavaScript to be fired on the home page
-        KWF.getPosts() ; 
+        KWF.getPosts() ;
+
       },
       finalize: function() {
-        // JavaScript to be fired on the home page, after the init JS
+        
+
+       
       }
     },
     // About us page, note the change from about-us to about_us.

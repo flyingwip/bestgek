@@ -12,9 +12,19 @@
       ],
       "main": true
     },
+    "swipebox.min.css": {
+      "files": [
+        "styles/swipebox.min.css"
+      ]
+    },
     "customizer.js": {
       "files": [
         "scripts/customizer.js"
+      ]
+    },
+    "jquery.swipebox.js": {
+      "files": [
+        "scripts/jquery.swipebox.js"
       ]
     },
     "jquery.js": {
