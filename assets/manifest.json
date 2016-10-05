@@ -12,9 +12,9 @@
       ],
       "main": true
     },
-    "swipebox.min.css": {
+    "prettyPhoto.css": {
       "files": [
-        "styles/swipebox.min.css"
+        "styles/prettyPhoto.css"
       ]
     },
     "flexslider.css": {
@@ -27,9 +27,9 @@
         "scripts/customizer.js"
       ]
     },
-    "jquery.swipebox.js": {
+    "jquery.prettyPhoto.js": {
       "files": [
-        "scripts/jquery.swipebox.js"
+        "scripts/jquery.prettyPhoto.js"
       ]
     },
     "jquery.flexslider.js": {

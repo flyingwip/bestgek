@@ -37,22 +37,23 @@
 
 
 <script id="gallery" type="text/html">
-
-    
       <div class="column <%=post.type %>">
           <div class="greybox">
             <h4><%=post.title %></h4>  
-            <a class="test-popup-link" href="path-to-image.jpg"><button>Bekijk de foto's</button></a>
+            <a rel="prettyPhoto[pp_gal_<%=post.id%>]" href="<%=post.gallery[0].original %>"><button>Bekijk de foto's</button></a>
+            <!-- <a href=""><button>Bekijk de foto's</button></a> -->
           </div> 
           <div class="flexslider">
             <ul class="slides">
-              <% _.each(post.gallery, function(acs) { %> 
+              <% _.each(post.gallery, function(figure) { %> 
                 <li>
+                  <a href="<%=figure.original%>" rel="prettyPhoto[pp_gal_<%=post.id%>]" title="">
                   <% if(post.columns===2){ %>
-                    <img src="<%=acs.afbeelding_twee_kolommen%>" />  
+                    <img src="<%=figure.afbeelding_twee_kolommen%>" />
                   <% } else {  %> 
-                    <img src="<%=acs.afbeelding_een_kolom%>" />  
-                  <% } %>  
+                    <img src="<%=figure.afbeelding_een_kolom%>" />  
+                  <% } %>
+                  </a>    
                 </li>
               <% }); %>               
             </ul>
@@ -67,7 +68,7 @@
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
           <div class="greybox">
           <h4><%=post.title %></h4>  
-          <a class="swipebox" rel="vimeo" href="<%=post.video%>" ><button>Bekijk de video</button></a>
+          <a class="" rel="prettyPhoto" href="<%=post.video%>" ><button>Bekijk de video</button></a>
         </div>  
       </div>    
     

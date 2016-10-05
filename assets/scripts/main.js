@@ -60,8 +60,8 @@
             //console.log( 'nu klaar moeten zijn' ); // "bar"
             
             //do we need to do this every time???
-            $( '.swipebox' ).swipebox();
             $('.flexslider').flexslider();
+            $("a[rel^='prettyPhoto']").prettyPhoto();
             
             return true;
           });  
@@ -101,15 +101,15 @@
           //make sure content is object and not a string
           if(typeof jsobject.content==='object'){
             post.gallery = KWF.parseGallery(jsobject.content);
+            console.log(post.gallery);
           }
-        }
+        } 
 
-
+        post.id = jsobject.id;
         post.type = KWF.getData('type',jsobject.acf);
         post.title = KWF.getData('title',jsobject);
         post.content = KWF.getData('content',jsobject);
         post.slug = KWF.getData('slug',jsobject);
-        //post.featured_image = KWF.getData('source_url',jsobject.better_featured_image);
         post.afbeelding_een_kolom = KWF.getData('afbeelding_een_kolom',jsobject.acf);
         post.afbeelding_twee_kolommen = KWF.getData('afbeelding_twee_kolommen',jsobject.acf);
         post.externe_link = KWF.getData('externe_link',jsobject.acf);
@@ -131,19 +131,18 @@
           var $gallery = $($.parseHTML( galleryObject.rendered )); 
           if($gallery){
             $gallery.find('figure div a img').each(function(i, obj){
-              
-              var dummy = 'http://www.bestgek.nl/wp-content/uploads/2016/10/collectbus-400x275.jpg';
-              
               var figure = {};
-              figure.original =  obj.src;
+              figure.original =  obj.src.replace("-150x150", "");   
               figure.afbeelding_een_kolom = KWF.getRightImage(obj.src, 1); 
-              //console.log(KWF.getRightImage(obj.src, 2));
               figure.afbeelding_twee_kolommen = KWF.getRightImage(obj.src, 2); 
               gallery[i] = figure;
             });
           }
           return gallery;
 
+      },
+      blaat: function() {
+        alert('Blaat me!')
       },
       getRightImage: function(imageName, columnSize) {
 
@@ -228,12 +227,13 @@
         var post_type = post.type.replace(" ", "_");
         var template = $('#'+post_type).html();
         var compiled = _.template(template, {variable: 'post'});
-        return  compiled( {type:post.type, title: post.title , slug:post.slug, 
+        return  compiled( { id:post.id, type:post.type, title: post.title , slug:post.slug, 
           video:post.video, externe_link:post.externe_link,
           content:post.content, afbeelding_een_kolom:post.afbeelding_een_kolom,
           afbeelding_twee_kolommen : post.afbeelding_twee_kolommen ,
           background_image : post.background_image,
-          gallery:post.gallery, columns:columnSize
+          gallery:post.gallery, columns:columnSize,
+          blaat:KWF.blaat
         } );
         //return  compiled( {type:post.type, title: post.title , slug:post.slug, video:post.video, externe_link:post.externe_link} );
       },
@@ -251,7 +251,6 @@
 
 
   };
-
 
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
