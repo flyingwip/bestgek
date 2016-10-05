@@ -36,6 +36,12 @@ function setup() {
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
 
+  //echo 'hahah!';
+  //add custom size thumbnails for the gallery
+  add_image_size( 'een-kolom', 265, 275, true); 
+  add_image_size( 'twee-kolom', 400, 275, true ); 
+
+
   // Enable post formats
   // http://codex.wordpress.org/Post_Formats
   add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);
@@ -47,6 +53,11 @@ function setup() {
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   add_editor_style(Assets\asset_path('styles/main.css'));
+
+
+  
+
+
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
@@ -97,6 +108,7 @@ function display_sidebar() {
 function assets() {
   wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
   wp_enqueue_style('swipebox/css', Assets\asset_path('styles/swipebox.min.css'), false, null);
+  wp_enqueue_style('flexslider/css', Assets\asset_path('styles/flexslider.css'), false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
@@ -107,5 +119,8 @@ function assets() {
   //inlucde undescrore
   wp_enqueue_script('underscore/js', Assets\asset_path('scripts/underscore-min.js'), ['jquery'], null, true);
   wp_enqueue_script('swipebox/js', Assets\asset_path('scripts/jquery.swipebox.js'), ['jquery'], null, true);
+  wp_enqueue_script('flexslider/js', Assets\asset_path('scripts/jquery.flexslider.js'), ['jquery'], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
+
+

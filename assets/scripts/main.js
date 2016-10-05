@@ -61,6 +61,7 @@
             
             //do we need to do this every time???
             $( '.swipebox' ).swipebox();
+            $('.flexslider').flexslider();
             
             return true;
           });  
@@ -100,7 +101,6 @@
           //make sure content is object and not a string
           if(typeof jsobject.content==='object'){
             post.gallery = KWF.parseGallery(jsobject.content);
-            console.log(gallery);
           }
         }
 
@@ -132,14 +132,29 @@
           if($gallery){
             $gallery.find('figure div a img').each(function(i, obj){
               
+              var dummy = 'http://www.bestgek.nl/wp-content/uploads/2016/10/collectbus-400x275.jpg';
+              
               var figure = {};
               figure.original =  obj.src;
-              figure.afbeelding_een_kolom = obj.src; 
-              figure.afbeelding_twee_kolommen = obj.src;
+              figure.afbeelding_een_kolom = KWF.getRightImage(obj.src, 1); 
+              //console.log(KWF.getRightImage(obj.src, 2));
+              figure.afbeelding_twee_kolommen = KWF.getRightImage(obj.src, 2); 
               gallery[i] = figure;
             });
           }
           return gallery;
+
+      },
+      getRightImage: function(imageName, columnSize) {
+
+          //find 150x150 and replace with 275x165
+          if(columnSize===1){
+            return imageName.replace("150x150", "265x275");   
+          } else {
+            return imageName.replace("150x150", "400x275"); 
+          }
+          
+
 
       },
       parseTemplates: function(jsobjects) {
@@ -169,7 +184,7 @@
 
               //get the right type template
               item = KWF.setBackgroundImage(item,column_layout);
-              var post = KWF.getTypeTemplate(item);
+              var post = KWF.getTypeTemplate(item, column_layout);
               
               //parse current item into right template
               template += KWF.parseColumn(post,column_layout);
@@ -207,8 +222,9 @@
         
         return template;
       },
-      getTypeTemplate: function(post) {
+      getTypeTemplate: function(post,columnSize) {
         
+        //var columnSize = columnSize;
         var post_type = post.type.replace(" ", "_");
         var template = $('#'+post_type).html();
         var compiled = _.template(template, {variable: 'post'});
@@ -216,7 +232,8 @@
           video:post.video, externe_link:post.externe_link,
           content:post.content, afbeelding_een_kolom:post.afbeelding_een_kolom,
           afbeelding_twee_kolommen : post.afbeelding_twee_kolommen ,
-          background_image : post.background_image
+          background_image : post.background_image,
+          gallery:post.gallery, columns:columnSize
         } );
         //return  compiled( {type:post.type, title: post.title , slug:post.slug, video:post.video, externe_link:post.externe_link} );
       },

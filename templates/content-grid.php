@@ -37,12 +37,26 @@
 
 
 <script id="gallery" type="text/html">
+
     
       <div class="column <%=post.type %>">
           <div class="greybox">
-          <h4><%=post.title %></h4>  
-          <a class="test-popup-link" href="path-to-image.jpg"><button>Bekijk de foto's</button></a>
-        </div>  
+            <h4><%=post.title %></h4>  
+            <a class="test-popup-link" href="path-to-image.jpg"><button>Bekijk de foto's</button></a>
+          </div> 
+          <div class="flexslider">
+            <ul class="slides">
+              <% _.each(post.gallery, function(acs) { %> 
+                <li>
+                  <% if(post.columns===2){ %>
+                    <img src="<%=acs.afbeelding_twee_kolommen%>" />  
+                  <% } else {  %> 
+                    <img src="<%=acs.afbeelding_een_kolom%>" />  
+                  <% } %>  
+                </li>
+              <% }); %>               
+            </ul>
+          </div>   
       </div>    
     
 </script>
