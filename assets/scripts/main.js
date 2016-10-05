@@ -30,7 +30,6 @@
               url: 'wp-json/wp/v2/posts?filter[posts_per_page]=12&filter[paged]='+KWF.currentPage,
               success: function ( data ) {
 
-
                 var new_data = ((data.length !== 0) ? KWF.setPage() : false);
                 
                 if(new_data){
@@ -92,7 +91,20 @@
           return newArr;
       },
       parsePost: function(jsobject) {
+
         var post = {};
+        //if the object is of type gallery. The image url need
+        // to be parsed as well
+        if(jsobject.acf.type==='gallery'){
+          //parse te gallery
+          //make sure content is object and not a string
+          if(typeof jsobject.content==='object'){
+            post.gallery = KWF.parseGallery(jsobject.content);
+            console.log(gallery);
+          }
+        }
+
+
         post.type = KWF.getData('type',jsobject.acf);
         post.title = KWF.getData('title',jsobject);
         post.content = KWF.getData('content',jsobject);
@@ -112,6 +124,23 @@
           } else {
             return jsobject[property].rendered;  
           }
+      },
+      parseGallery: function(galleryObject) {
+
+          gallery = [];
+          var $gallery = $($.parseHTML( galleryObject.rendered )); 
+          if($gallery){
+            $gallery.find('figure div a img').each(function(i, obj){
+              
+              var figure = {};
+              figure.original =  obj.src;
+              figure.afbeelding_een_kolom = obj.src; 
+              figure.afbeelding_twee_kolommen = obj.src;
+              gallery[i] = figure;
+            });
+          }
+          return gallery;
+
       },
       parseTemplates: function(jsobjects) {
 

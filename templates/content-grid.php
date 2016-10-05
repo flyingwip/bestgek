@@ -81,11 +81,7 @@
 </script>
 
 
-
-<div class="container grid">
-
-<h2>Greetings</h2>
-
-</div>
+<!-- The grid container -->
+<div class="container grid"></div>
 
 <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
