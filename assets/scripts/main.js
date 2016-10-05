@@ -14,35 +14,75 @@
 
   var KWF = {
 
+    grid: '',
+    currentPage: 1,
+    page: 1,
+    setPage: function() {
+       KWF.currentPage++;
+       return true
+    },
     getPosts: function() {
         // JavaScript to be fired on all pages
         //return 'yo';
         jQuery( function( $ ) {
           
             $.ajax( {
-              url: 'wp-json/wp/v2/posts?filter[posts_per_page]=12&filter[paged]=1',
+              url: 'wp-json/wp/v2/posts?filter[posts_per_page]=12&filter[paged]='+KWF.currentPage,
               success: function ( data ) {
-                   
-                //objects needs to be parsed  into a flat horzizontal json 
-                var parsedObjects = KWF.parsePosts(data); 
 
-                //npw parse data into templates
-                var parsedTemplates = KWF.parseTemplates(parsedObjects);                 
 
-                //add the comipled grid to the grid container
-                $(".grid").html( parsedTemplates ).promise().done(function(){
-                  console.log('grid loaded');              
-                  $( '.swipebox' ).swipebox();
-                })
+                var new_data = ((data.length !== 0) ? KWF.setPage() : false);
                 
-                
-                
-                
+                if(new_data){
+                  //objects needs to be parsed  into a flat horzizontal json 
+                  var parsedObjects = KWF.parsePosts(data); 
+                  //npw parse data into templates
+                  var parsedTemplates = KWF.parseTemplates(parsedObjects);  
+                  //trigger evenet
+                  $( document ).trigger( "postsReady", parsedTemplates );  
+                  return   true;             
+                } else {
+                  return false;
+                }
+              
               },
               cache: false
             } );
         } );
 
+
+      },
+      addToGrid: function() {
+
+        //lister to event
+        $( document ).on( "postsReady", function( posts, parsedTemplates ) {
+          
+          $(parsedTemplates).appendTo('.grid').promise().done(function(){
+            //console.log( 'nu klaar moeten zijn' ); // "bar"
+            
+            //do we need to do this every time???
+            $( '.swipebox' ).swipebox();
+            
+            return true;
+          });  
+
+          
+      });
+        return true;
+      },
+      infiniteScrolling: function(jsobjects) {
+        var win = $(window);
+        // Each time the user scrolls
+        win.scroll(function() {
+          // End of the document reached?
+          if ($(document).height() - win.height() == win.scrollTop()) {
+            ///$('#loading').show();
+
+            console.log('load more posts for page ' + KWF.currentPage);
+            //get some posts
+            KWF.getPosts();
+          }
+        });
 
       },
       parsePosts: function(jsobjects) {
@@ -184,6 +224,12 @@
       init: function() {
         // JavaScript to be fired on the home page
         KWF.getPosts() ;
+        KWF.addToGrid();
+
+        //enable 
+        KWF.infiniteScrolling() ;
+
+
 
       },
       finalize: function() {

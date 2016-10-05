@@ -17,7 +17,7 @@
       <div class="column <%=post.type %>" style=background-image:url(<%=post.background_image %>)>
           <div class="greybox">
             <h4><%=post.title %></h4>  
-            <button>lees meer --></button>
+            <a href="<%=post.slug%>"><button>lees meer --></button></a>
           </div>  
       </div>    
     
@@ -29,7 +29,7 @@
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
         <div class="greybox">
           <h4><%=post.title %></h4>  
-          <a href=""><button>Teken de petitie</button></a>
+          <a href="<%=post.slug%>"><button>lees meer --></button></a>
         </div>  
       </div>    
     
@@ -42,7 +42,6 @@
           <div class="greybox">
           <h4><%=post.title %></h4>  
           <a class="test-popup-link" href="path-to-image.jpg"><button>Bekijk de foto's</button></a>
-          
         </div>  
       </div>    
     
@@ -64,10 +63,10 @@
 <script id="externe_link" type="text/html">
     
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
-          <h3><%=post.type %></h3>
-          <div><%=post.title %></div>
-          <div><%=post.slug %></div>
-          <div><%=post.externe_link %></div>
+        <div class="greybox">
+            <h3><%=post.title %></h3>
+            <a href="<%=post.externe_link%>"><button>lees meer --></button></a>
+        </div>    
       </div>    
     
 </script>
@@ -85,12 +84,7 @@
 
 <div class="container grid">
 
-  
-
-
-
-  
-
+<h2>Greetings</h2>
 
 </div>
 
