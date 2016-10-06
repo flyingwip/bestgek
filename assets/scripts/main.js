@@ -60,7 +60,7 @@
             //console.log( 'nu klaar moeten zijn' ); // "bar"
             
             //do we need to do this every time???
-            $('.flexslider').flexslider();
+            $('.flexslider').flexslider({slideshow: true, slideshowSpeed:4000});
             $("a[rel^='prettyPhoto']").prettyPhoto();
             
             return true;
@@ -101,7 +101,6 @@
           //make sure content is object and not a string
           if(typeof jsobject.content==='object'){
             post.gallery = KWF.parseGallery(jsobject.content);
-            console.log(post.gallery);
           }
         } 
 

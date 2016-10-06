@@ -1,0 +1,26 @@
+
+
+body{
+	font-family: Verdana;
+}
+
+h1{
+	color: $brand-primary;
+	font-weight: bold;
+}
+
+h4{
+	font-weight: bold;
+}
+
+label, input[type='submit']{
+	//font-weight: normal;
+	font-size: 12px;
+}
+
+.quote{
+
+	div{
+		font-size: 22px;
+	}
+}

@@ -1,0 +1,23 @@
+
+
+
+button, input[type='submit']{
+	color:$brand-primary;
+	background-color: #FFF;
+	border: 0px;
+	font-weight: bold;
+	border-radius: 3px;
+	padding: 7px;
+
+}
+
+button.blue{
+	background-color: $brand-primary !important;
+	color: #FFF;
+	position: relative;
+	top:-60px;
+	left:10px;
+	z-index: 20;
+}
+
+

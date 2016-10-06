@@ -13,3 +13,20 @@
   @extend .btn;
   @extend .btn-default;
 }
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input, input[type="number"]{
+	width: 100%;
+	color: $brand-primary ;
+}
+
+input[type='submit']{
+	width: 50%;
+	margin-top: 10px;
+}

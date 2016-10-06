@@ -14,3 +14,33 @@
 // 	}
 	
 // }
+
+.cl, .cr{
+	float: left;
+	padding: 2%;
+}
+
+.cl{
+	width: 60%
+}
+.cr{
+	width: 40%;
+    background: $brand-primary;
+    color: #FFF;
+}
+
+
+@media (max-width: $screen-xs-min) { 
+
+	.cl, .cr{
+		float: none;
+		padding: 2%;
+	}
+
+	.cl{
+		width: 100%;
+	}
+	.cr{
+		width: 100%;
+	}
+}
