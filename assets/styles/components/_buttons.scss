@@ -2,36 +2,54 @@
 
 
 button, input[type='submit']{
+
+	-o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+
 	color:$brand-primary;
 	background-color: #FFF;
-	border: 0px;
+	border: 2px solid #FFF;
 	font-weight: bold;
 	border-radius: 3px;
 	padding: 7px;
+	font-size: 12px;
 	
 
 
 }
 
-button.blue{
+button:hover, input[type='submit']:hover{
+	background-color: $brand-primary;
+	color:#FFF
+	
+}
 
-	background-color: $brand-primary !important;
+button.blue{
+	background: $brand-primary url(../images/arrow-white-left.png) no-repeat 10% 50%;
+	background-size: 25px 10px;
 	color: #FFF;
 	position: relative;
 	top:-60px;
 	left:10px;
 	z-index: 20;
+	padding-left: 37px;
+	border: 0px ;
+}
+
+button.blue:hover{
+	background: #FFF url(../images/arrow-blue-left.png) no-repeat 10% 50%;
+	background-size: 25px 10px;
+	color: $brand-primary;
+	
 }
 
 button.white{
 	
 	background: #FFF url(../images/arrow-blue.png) no-repeat 94% 55%;
 	background-size: 25px 10px;
-	-o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    /* ...and now for the proper property */
+   border: 0px ;
     transition:.5s;
     padding-right: 40px;
 }

@@ -18,7 +18,7 @@
           <div class="greybox">
             <div class="bottombox">
               <h4><%=post.title %></h4>  
-              <a href="<%=post.slug%>"><button class="white">lees meer</button></a>  
+              <a href="<%=post.slug%>"><button class="white">Lees meer</button></a>  
             </div>
           </div>  
       </div>    
@@ -32,7 +32,7 @@
         <div class="greybox">
           <div class="bottombox">
               <h4><%=post.title %></h4>  
-              <a href="<%=post.slug%>"><button class="white">lees meer</button></a>  
+              <a href="<%=post.slug%>"><button class="white">Lees meer</button></a>  
             </div>
         </div>  
       </div>    
@@ -89,7 +89,7 @@
         <div class="greybox">
           <div class="bottombox">
               <h3><%=post.title %></h3>
-              <a href="<%=post.externe_link%>"><button class="white">lees meer</button></a>
+              <a href="<%=post.externe_link%>"><button class="white">Lees meer</button></a>
           </div>    
         </div>    
       </div>    

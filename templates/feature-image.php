@@ -3,6 +3,6 @@
   <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'single-post-thumbnail' ); ?>
   <div id="featured-image" >
   	<img src="<?php echo $image[0]; ?>">
-  	<a href="javascript:history.back();"><button class="blue"><-- Terug</button></a>
+  	<a href="javascript:history.back();"><button class="blue">Terug</button></a>
   </div>
 <?php endif; ?>
