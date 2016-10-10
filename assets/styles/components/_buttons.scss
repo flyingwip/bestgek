@@ -8,10 +8,13 @@ button, input[type='submit']{
 	font-weight: bold;
 	border-radius: 3px;
 	padding: 7px;
+	
+
 
 }
 
 button.blue{
+
 	background-color: $brand-primary !important;
 	color: #FFF;
 	position: relative;
@@ -20,4 +23,22 @@ button.blue{
 	z-index: 20;
 }
 
+button.white{
+	
+	background: #FFF url(../images/arrow-blue.png) no-repeat 94% 55%;
+	background-size: 25px 10px;
+	-o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+    padding-right: 40px;
+}
+
+button.white:hover{
+	background: $brand-primary url(../images/arrow-white.png) no-repeat 94% 55%;
+	background-size: 25px 10px;
+	color: #FFF;
+}
 

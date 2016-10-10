@@ -155,10 +155,12 @@
 
 
       },
+      currentRow:0
+      ,
       parseTemplates: function(jsobjects) {
 
           //map throught the array
-          var currentRow = 0;
+          //var currentRow = 0;
           var openRow = true;
           var amountColumns = 2;
           var column_layout = 0;
@@ -168,7 +170,7 @@
               //do I need to open a row? 
               if(openRow){
                 //what kind of row . 2 or 3 column?
-                if(KWF.isOdd(currentRow)){
+                if(KWF.isOdd(KWF.currentRow)){
                   amountColumns = 3;
                   column_layout = 3;
                 } else {
@@ -192,7 +194,7 @@
               if(amountColumns===0){
                 //console.log( 'sluiten', currentRow);
                 template += KWF.closeRow(); 
-                currentRow++; 
+                KWF.currentRow++; 
                 openRow = true;
               }
               return template;

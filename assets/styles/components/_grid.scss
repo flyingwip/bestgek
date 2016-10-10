@@ -15,6 +15,9 @@
 	div[class^="col"] {
 		padding: 1px;
 		position: relative;
+		overflow: hidden;
+		
+
 		.greybox{
 			box-sizing : border-box;
 			position: absolute;
@@ -24,10 +27,20 @@
 			padding: 4%;
 			bottom:0px;
 			z-index: 10;
+			height: 114px;
 
-			h4{
-				font-weight: bold;	
+			.bottombox{
+				position: absolute;
+				bottom: 10px;
+				h4{
+					font-weight: bold;	
+				}	
+
 			}
+
+			
+
+			
 
 		}
 

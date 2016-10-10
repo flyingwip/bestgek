@@ -16,8 +16,10 @@
     
       <div class="column <%=post.type %>" style=background-image:url(<%=post.background_image %>)>
           <div class="greybox">
-            <h4><%=post.title %></h4>  
-            <a href="<%=post.slug%>"><button>lees meer --></button></a>
+            <div class="bottombox">
+              <h4><%=post.title %></h4>  
+              <a href="<%=post.slug%>"><button class="white">lees meer</button></a>  
+            </div>
           </div>  
       </div>    
     
@@ -28,8 +30,10 @@
     
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
         <div class="greybox">
-          <h4><%=post.title %></h4>  
-          <a href="<%=post.slug%>"><button>lees meer --></button></a>
+          <div class="bottombox">
+              <h4><%=post.title %></h4>  
+              <a href="<%=post.slug%>"><button class="white">lees meer</button></a>  
+            </div>
         </div>  
       </div>    
     
@@ -39,9 +43,11 @@
 <script id="gallery" type="text/html">
       <div class="column <%=post.type %>">
           <div class="greybox">
-            <h4><%=post.title %></h4>  
-            <a rel="prettyPhoto[pp_gal_<%=post.id%>]" href="<%=post.gallery[0].original %>"><button>Bekijk de foto's</button></a>
-            <!-- <a href=""><button>Bekijk de foto's</button></a> -->
+            <div class="bottombox">
+              <h4><%=post.title %></h4>  
+              <a rel="prettyPhoto[pp_gal_<%=post.id%>]" href="<%=post.gallery[0].original %>"><button class="white">Bekijk de foto's</button></a>
+              <!-- <a href=""><button>Bekijk de foto's</button></a> -->
+            </div>  
           </div> 
           <div class="flexslider">
             <ul class="slides">
@@ -67,8 +73,10 @@
     
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
           <div class="greybox">
-          <h4><%=post.title %></h4>  
-          <a class="" rel="prettyPhoto" href="<%=post.video%>" ><button>Bekijk de video</button></a>
+          <div class="bottombox">
+            <h4><%=post.title %></h4>  
+            <a class="" rel="prettyPhoto" href="<%=post.video%>" ><button class="white">Bekijk de video</button></a>
+          </div>  
         </div>  
       </div>    
     
@@ -79,8 +87,10 @@
     
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
         <div class="greybox">
-            <h3><%=post.title %></h3>
-            <a href="<%=post.externe_link%>"><button>lees meer --></button></a>
+          <div class="bottombox">
+              <h3><%=post.title %></h3>
+              <a href="<%=post.externe_link%>"><button class="white">lees meer</button></a>
+          </div>    
         </div>    
       </div>    
     
