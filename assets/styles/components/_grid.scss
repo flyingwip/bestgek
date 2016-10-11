@@ -10,7 +10,7 @@
 }
 
 
-.grid{
+.grid, .banner{
 	
 	div[class^="col"] {
 		padding: 1px;
@@ -38,10 +38,6 @@
 
 			}
 
-			
-
-			
-
 		}
 
 		.column{
@@ -58,6 +54,21 @@
 	}
 
 	
+}
+
+.banner{
+	.row{
+		background-color: $brand-primary !important;	
+		background-repeat: no-repeat !important;
+		height: 275px;
+		div[class^="col"] {
+			
+			padding: 4%;
+			color: #FFF;
+			height: 275px;
+		}
+		
+	}
 }
 
 .quote{

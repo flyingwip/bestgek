@@ -31,7 +31,7 @@
               success: function ( data ) {
 
                 var new_data = ((data.length !== 0) ? KWF.setPage() : false);
-                
+                //console.log(data);
                 if(new_data){
                   //objects needs to be parsed  into a flat horzizontal json 
                   var parsedObjects = KWF.parsePosts(data); 
@@ -109,12 +109,23 @@
         post.title = KWF.getData('title',jsobject);
         post.content = KWF.getData('content',jsobject);
         post.slug = KWF.getData('slug',jsobject);
-        post.afbeelding_een_kolom = KWF.getData('afbeelding_een_kolom',jsobject.acf);
-        post.afbeelding_twee_kolommen = KWF.getData('afbeelding_twee_kolommen',jsobject.acf);
+        // post.afbeelding_een_kolom = KWF.getData('afbeelding_een_kolom',jsobject.acf);
+        // post.afbeelding_twee_kolommen = KWF.getData('afbeelding_twee_kolommen',jsobject.acf);
         post.externe_link = KWF.getData('externe_link',jsobject.acf);
         post.video = KWF.getData('video',jsobject.acf);
         post.externe_link = KWF.getData('externe_link',jsobject.acf);
-        //console.log(post);
+        //post.afbeelding 
+        //post.afbeelding = KWF.getData('source_url',jsobject.better_featured_image);
+        //console.log(post.afbeelding);
+        //console.log(jsobject.better_featured_image['source_url']);
+        if(jsobject.better_featured_image){
+            //console.log(jsobject.better_featured_image.source_url);
+            post.afbeelding = jsobject.better_featured_image.source_url;
+            post.afbeelding_een_kolom = KWF.getColumnImage(post.afbeelding,1);
+            post.afbeelding_twee_kolommen = KWF.getColumnImage(post.afbeelding,2);
+
+        }
+        //console.log(post);  
         return post;
       },
       getData: function( property,jsobject) {
@@ -151,10 +162,21 @@
           } else {
             return imageName.replace("150x150", "400x275"); 
           }
-          
-
-
+      
       },
+      getColumnImage: function(imageName, columnSize) {
+
+          //find 150x150 and replace with 275x165
+          $temp = imageName.substr(imageName.length - 4);
+          //.png
+          if(columnSize===1){
+            //-265x275.png
+            return imageName.replace($temp, "-265x275"+$temp);   
+          } else {
+            return imageName.replace($temp, "-400x275"+$temp); 
+          }
+      
+      },      
       currentRow:0
       ,
       parseTemplates: function(jsobjects) {

@@ -88,13 +88,17 @@
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
         <div class="greybox">
           <div class="bottombox">
-              <h3><%=post.title %></h3>
+              <h4><%=post.title %></h4>
               <a href="<%=post.externe_link%>"><button class="white">Lees meer</button></a>
           </div>    
         </div>    
       </div>    
     
 </script>
+
+
+
+
 
 <script id="quote" type="text/html">
     
@@ -105,8 +109,50 @@
     
 </script>
 
+<?php
+$banner = new WP_Query(array('post_type' => 'banner', 'posts_per_page' => 1,'post_status' => array('publish')));
+
+
+while ($banner->have_posts()) : $banner->the_post();
+?>
+  <!-- The Banner -->
+  <div class="container banner">
+    <div class="row" style="background:url(<?php echo get_field('achtergrond', $banner->posts[0]->ID ); ?>">
+      <?php
+
+      $fields = get_post_custom( $banner->posts[0]->ID );
+      // echo '<pre>';
+      // print_r($fields);
+      // echo '</pre>';
+      ?>
+      <!-- linker kolom -->
+      <div class="col-xs-12 col-sm-6" >
+      <?php
+          echo get_field('linker_kolom', $banner->posts[0]->ID );
+          //echo($fields['rechter_kolom'][0]);
+      ?>
+      </div>
+
+      <!-- rechter kolom -->
+      <div class="col-xs-12 col-sm-6 dv_color" >
+      <?php
+          echo get_field('rechter_kolom', $banner->posts[0]->ID );
+          //echo($fields['rechter_kolom'][0]);
+      ?>
+
+      </div>
+
+    </div>
+  </div>
+<?php
+endwhile;
+wp_reset_query(); ?>
+
 
 <!-- The grid container -->
-<div class="container grid"></div>
+<div class="container grid">
+  
+
+</div>
 
 <?php wp_link_pages(['before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'), 'after' => '</p></nav>']); ?>
