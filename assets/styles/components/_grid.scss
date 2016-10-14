@@ -13,7 +13,11 @@
 .grid, .banner{
 	
 	div[class^="col"] {
-		padding: 1px;
+		//on mobile no padding
+		padding: 0px;
+		@media (min-width: $screen-sm-min) { 
+			padding: 1px;
+		}
 		position: relative;
 		overflow: hidden;
 		
@@ -27,7 +31,7 @@
 			padding: 4%;
 			bottom:0px;
 			z-index: 10;
-			height: 114px;
+			height: 95px;
 
 			.bottombox{
 				position: absolute;
@@ -41,6 +45,11 @@
 		}
 
 		.column{
+			 background-repeat: no-repeat; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			 -o-background-size: cover;
+			 background-size: cover;
 			background-color: $brand-primary;	
 			height: 275px;
 
@@ -58,15 +67,38 @@
 
 .banner{
 	.row{
-		background-color: $brand-primary !important;	
-		background-repeat: no-repeat !important;
 		height: 275px;
-		div[class^="col"] {
-			
-			padding: 4%;
-			color: #FFF;
-			height: 275px;
-		}
+		.bgcolor{
+			div[class^="col"] {
+				background-color: $brand-primary !important;
+				.column{
+					
+					padding:0px; 		
+					color: #FFF;
+					height: 275px;	
+				}
+				
+			}
+
+			.left{
+				padding-bottom: 1px;
+				
+				.column{
+					padding-right: 0px;
+				}
+			}
+			.right{
+				//background-color: $brand-primary !important;
+				background-color: red;
+
+				.column{
+					padding: 4% !important;
+				}
+			}
+		}	
+		
+		
+		
 		
 	}
 }
@@ -86,4 +118,8 @@
   		transform: translate(0%, -50%);
 	}
 	
+}
+
+.gallery{
+	padding: 0px !important;
 }

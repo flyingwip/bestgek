@@ -48,3 +48,45 @@
 		background-color: $brand-primary;
 	}
 }
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) { 
+	.flexslider .slides img {
+	    height: 275px !important; 
+	}
+
+
+}
+
+@media (max-width: $screen-xs-min) { 
+	h1.entry-title, .entry-content{
+		padding: 0px 15px 0px 15px;
+
+	}
+}
+
+
+//The gallery
+
+div.pp_default .pp_nav{
+	display: none !important;
+}
+
+// //The gallery
+div.pp_default .pp_description{
+	    margin: 5px 50px 5px 10px !important;
+	    font-weight: 500 !important;
+	    font-size: 12px;
+}
+div.pp_default .pp_social {
+    visibility: hidden !important;
+}
+
+div.pp_default .pp_content {
+    
+    .twitter iframe{
+    	visibility: hidden !important;
+    }
+}
+

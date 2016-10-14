@@ -13,30 +13,30 @@
 </script>
 
 <script id="blog" type="text/html">
-    
-      <div class="column <%=post.type %>" style=background-image:url(<%=post.background_image %>)>
-          <div class="greybox">
-            <div class="bottombox">
-              <h4><%=post.title %></h4>  
-              <a href="<%=post.slug%>"><button class="white">Lees meer</button></a>  
-            </div>
-          </div>  
-      </div>    
-    
+      <a href="<%=post.slug%>">
+        <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>)">
+            <div class="greybox">
+              <div class="bottombox">
+                <h4><%=post.title %></h4>  
+                <button class="white">Lees meer</button>  
+              </div>
+            </div>  
+        </div>    
+      </a>
 </script>
 
 
 <script id="petitie" type="text/html">
-    
+    <a href="<%=post.slug%>">
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
         <div class="greybox">
           <div class="bottombox">
               <h4><%=post.title %></h4>  
-              <a href="<%=post.slug%>"><button class="white">Lees meer</button></a>  
+              <button class="white">Teken de petitie</button>  
             </div>
         </div>  
       </div>    
-    
+    </a>
 </script>
 
 
@@ -45,7 +45,7 @@
           <div class="greybox">
             <div class="bottombox">
               <h4><%=post.title %></h4>  
-              <a rel="prettyPhoto[pp_gal_<%=post.id%>]" href="<%=post.gallery[0].original %>"><button class="white">Bekijk de foto's</button></a>
+              <a rel="prettyPhoto[pp_gal_<%=post.id%>]" href="<%=post.gallery[0].original %>" title="<%=post.gallery[0].description %>"><button class="white">Bekijk de foto's</button></a>
               <!-- <a href=""><button>Bekijk de foto's</button></a> -->
             </div>  
           </div> 
@@ -53,7 +53,7 @@
             <ul class="slides">
               <% _.each(post.gallery, function(figure) { %> 
                 <li>
-                  <a href="<%=figure.original%>" rel="prettyPhoto[pp_gal_<%=post.id%>]" title="">
+                  <a href="<%=figure.original%>" rel="prettyPhoto[pp_gal_<%=post.id%>]" title="<%=figure.description%>" >
                   <% if(post.columns===2){ %>
                     <img src="<%=figure.afbeelding_twee_kolommen%>" />
                   <% } else {  %> 
@@ -70,30 +70,30 @@
 
 
 <script id="video" type="text/html">
-    
+    <a class="" rel="prettyPhoto" href="<%=post.video%>" >
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
           <div class="greybox">
           <div class="bottombox">
             <h4><%=post.title %></h4>  
-            <a class="" rel="prettyPhoto" href="<%=post.video%>" ><button class="white">Bekijk de video</button></a>
+            <button class="white">Bekijk de video</button>
           </div>  
         </div>  
       </div>    
-    
+    </a>
 </script>
 
 
 <script id="externe_link" type="text/html">
-    
+    <a href="<%=post.externe_link%>">
       <div class="column <%=post.type %>" style="background-image:url(<%=post.background_image %>) ">
         <div class="greybox">
           <div class="bottombox">
               <h4><%=post.title %></h4>
-              <a href="<%=post.externe_link%>"><button class="white">Lees meer</button></a>
+              <button class="white">Lees meer</button>
           </div>    
         </div>    
       </div>    
-    
+    </a>
 </script>
 
 
@@ -117,30 +117,20 @@ while ($banner->have_posts()) : $banner->the_post();
 ?>
   <!-- The Banner -->
   <div class="container banner">
-    <div class="row" style="background:url(<?php echo get_field('achtergrond', $banner->posts[0]->ID ); ?>">
-      <?php
+    <div class="row" >
+      <div class="bgcolor">
+        <!-- linker kolom -->
+        <div class="col-xs-12 col-sm-6 left">
+        
+          <div class="column" style="background:url(<?php echo get_field('linker_kolom', $banner->posts[0]->ID ); ?>"></div>
+        </div>
 
-      $fields = get_post_custom( $banner->posts[0]->ID );
-      // echo '<pre>';
-      // print_r($fields);
-      // echo '</pre>';
-      ?>
-      <!-- linker kolom -->
-      <div class="col-xs-12 col-sm-6" >
-      <?php
-          echo get_field('linker_kolom', $banner->posts[0]->ID );
-          //echo($fields['rechter_kolom'][0]);
-      ?>
-      </div>
-
-      <!-- rechter kolom -->
-      <div class="col-xs-12 col-sm-6 dv_color" >
-      <?php
-          echo get_field('rechter_kolom', $banner->posts[0]->ID );
-          //echo($fields['rechter_kolom'][0]);
-      ?>
-
-      </div>
+        <!-- rechter kolom -->
+        <div class="col-xs-12 col-sm-6 dv_color right" >
+          <div class="column"><?php echo get_field('rechter_kolom', $banner->posts[0]->ID ); ?></div>
+        </div>
+      </div>    
+      
 
     </div>
   </div>

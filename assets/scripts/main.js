@@ -145,6 +145,7 @@
               figure.original =  obj.src.replace("-150x150", "");   
               figure.afbeelding_een_kolom = KWF.getRightImage(obj.src, 1); 
               figure.afbeelding_twee_kolommen = KWF.getRightImage(obj.src, 2); 
+              figure.description = obj.alt;
               gallery[i] = figure;
             });
           }

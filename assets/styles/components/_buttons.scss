@@ -42,6 +42,11 @@ button.blue{
 	border: 0px ;
 }
 
+button.blue.back{
+	padding-right: 5px;
+	left:15px;
+}
+
 button.blue:hover{
 	background: #FFF url(../images/arrow-blue-left.png) no-repeat 10% 50%;
 	background-size: 25px 10px;
@@ -63,4 +68,35 @@ button.white:hover{
 	background-size: 25px 10px;
 	color: #FFF;
 }
+
+
+
+.flex-direction-nav a.flex-next, .flex-direction-nav a.flex-prev { 
+    //content: '\f002';
+    background-image: url(../images/next-arrow.svg);
+    -ms-transform: scale(.7, .7); /* IE 9 */
+    -webkit-transform: scale(.7, .7); /* Safari */
+    transform: scale(.7, .7);
+}
+
+.flex-direction-nav a.flex-prev { 
+	
+    // -ms-transform: scale(.5, .5); /* IE 9 */
+    // -webkit-transform: scale(.5, .5); /* Safari */
+    // transform: scale(.5, .5);
+    -webkit-transform: scale(.7, .7)rotate(180deg);
+    -moz-transform: scale(.7, .7) rotate(180deg);
+    transform: scale(.7, .7) rotate(180deg);
+}
+
+.flexslider .flex-direction-nav .flex-prev {
+  opacity: 0.7;
+  left: 10px;
+}
+
+.flexslider .flex-direction-nav .flex-next {
+    opacity: .7;
+    right: 10px;
+}
+
 
